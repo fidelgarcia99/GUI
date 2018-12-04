@@ -5,6 +5,7 @@ from tkinter import messagebox
 class Ventana:
     def __init__(self):
         self.root = Tk()
+        self.root.iconbitmap('./icons/djvu_icon.ico')
         self.ancho = self.root.winfo_screenwidth()
         self.alto = self.root.winfo_screenheight()
         self.root.geometry(str(self.ancho) + 'x' + str(self.alto))
@@ -33,7 +34,14 @@ class Ventana:
 
         self.edit = Menu(self.bar, tearoff = 0)
         self.edit.add_cascade(label = 'Edit', menu = self.edit)
-        
+        self.edit.add_command(label = 'Copy', accelerator = 'Ctrl+C')
+        self.file.add_separator()
+        self.edit.add_command(label = 'Add Bookmark...')
+        self.file.add_separator()
+        self.edit.add_command(label = 'Highlight Selection...')
+        self.edit.add_command(label = 'Export Selection..')
+        self.file.add_separator()
+        self.edit.add_command(label = 'Find', accelerator = 'Ctrl+F')
 
 
 
