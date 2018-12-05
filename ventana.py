@@ -123,8 +123,6 @@ class Ventana:
         self.about.geometry('400x300')
         self.about.configure(bg = 'grey')
         self.about.title('About WinDjView')
-
-
         self.about.mainloop()
 
 
