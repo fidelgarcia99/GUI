@@ -5,7 +5,8 @@ from tkinter import messagebox
 class Ventana:
     def __init__(self):
         self.root = Tk()
-        self.root.iconbitmap('./icons/djvu_icon.ico')
+        self.img = PhotoImage(file = 'djvu_icon.gif')
+        self.root.tk.call('wm', 'iconphoto', self.root._w, self.img)
         self.ancho = self.root.winfo_screenwidth()
         self.alto = self.root.winfo_screenheight()
         self.root.geometry(str(self.ancho) + 'x' + str(self.alto))
@@ -42,6 +43,8 @@ class Ventana:
         self.edit.add_command(label = 'Export Selection..')
         self.file.add_separator()
         self.edit.add_command(label = 'Find', accelerator = 'Ctrl+F')
+
+        self.root.config(menu = self.bar)
 
 
 
