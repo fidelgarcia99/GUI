@@ -17,7 +17,7 @@ class Ventana:
         self.ancho = self.root.winfo_screenwidth()
         self.alto = self.root.winfo_screenheight()
         self.root.geometry(str(self.ancho) + 'x' + str(self.alto))
-        self.root.configure(bg = 'white')
+        self.root.configure(bg = 'dark grey')
         self.root.title('WinDjView')
         self.addMenu()
         self.root.mainloop()
@@ -100,8 +100,33 @@ class Ventana:
         self.tools.add_command(label = 'Marquee Zoom')
         self.bar.add_cascade(label = 'Tools', menu = self.tools)
 
+        #---Barra de Window---#
+        self.window = Menu(self.bar, tearoff = 0)
+        self.window.add_command(label = 'Fullscreen', accelerator = 'Ctrl+L')
+        self.window.add_separator()
+        self.bar.add_cascade(label = 'Window', menu = self.window)
+
+        #---Barra de Help---#
+        self.help = Menu(self.bar, tearoff = 0)
+        self.help.add_command(label = 'Check for updates...')
+        self.help.add_command(label = 'About WinDjView...', command = self.__about)
+        self.bar.add_cascade(label = 'Help', menu = self.help)
 
         self.root.config(menu = self.bar)
+    
+    def __about(self):
+        self.about = Toplevel()
+        self.base_folder = os.path.dirname(__file__)
+        self.image_path = os.path.join(self.base_folder,'djvu_icon.gif')
+        self.logo = PhotoImage(file = self.image_path)
+        self.about.tk.call('wm','iconphoto',self.about._w, self.logo)
+        self.about.geometry('400x300')
+        self.about.configure(bg = 'grey')
+        self.about.title('About WinDjView')
+
+
+        self.about.mainloop()
+
 
 
 
