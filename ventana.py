@@ -2,10 +2,17 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 
+#--Agrega el icono de WinDj al programa--#
+import os 
+
+
 class Ventana:
     def __init__(self):
         self.root = Tk()
-        #self.bit = self.root.iconbitmap('djvu_icon.ico')        
+        self.base_folder = os.path.dirname(__file__)
+        self.image_path = os.path.join(self.base_folder,'djvu_icon.gif')
+        self.img = PhotoImage(file = self.image_path)
+        self.root.tk.call('wm','iconphoto',self.root._w, self.img)
         self.ancho = self.root.winfo_screenwidth()
         self.alto = self.root.winfo_screenheight()
         self.root.geometry(str(self.ancho) + 'x' + str(self.alto))
@@ -38,7 +45,7 @@ class Ventana:
         self.edit.add_command(label = 'Add Bookmark...')
         self.edit.add_separator()
         self.edit.add_command(label = 'Highlight Selection...', state = DISABLED)
-        self.edit.add_command(label = 'Export Selection..', state = state = DISABLED)
+        self.edit.add_command(label = 'Export Selection..', state = DISABLED)
         self.edit.add_separator()
         self.edit.add_command(label = 'Find', accelerator = 'Ctrl+F')
         self.bar.add_cascade(label = 'Edit', menu = self.edit)
