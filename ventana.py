@@ -1,8 +1,9 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
+from PIL import *
 
-#--Agrega el icono de WinDj al programa--#
+#--Libreria que grega el icono de WinDj al programa--#
 import os 
 
 
@@ -23,6 +24,8 @@ class Ventana:
     
     def addMenu(self):
         self.bar = Menu(self.root)
+
+        #---Barra File---#
         self.file = Menu(self.bar, tearoff = 0)
         self.file.add_command(label = 'Open...', accelerator = 'Ctrl+O')
         self.file.add_command(label = 'Save As...', accelerator = 'Ctrl+S')
@@ -39,6 +42,7 @@ class Ventana:
         self.file.add_command(label = 'Exit', accelerator = 'Ctrl+Q', command = self.root.quit)
         self.bar.add_cascade(label = 'File', menu = self.file)
 
+        #---Barra de Edit---#
         self.edit = Menu(self.bar, tearoff = 0)
         self.edit.add_command(label = 'Copy', accelerator = 'Ctrl+C', state = DISABLED)
         self.edit.add_separator()
@@ -50,6 +54,7 @@ class Ventana:
         self.edit.add_command(label = 'Find', accelerator = 'Ctrl+F')
         self.bar.add_cascade(label = 'Edit', menu = self.edit)
 
+        #---Barra de View---#
         self.view = Menu(self.bar, tearoff = 0)
         self.view.add_command(label = 'Toolbar')
         self.view.add_command(label = 'Tab Bar')
@@ -62,7 +67,21 @@ class Ventana:
         self.view.add_command(label = 'Fit Width')
         self.view.add_command(label = 'Stretch')
         self.view.add_command(label = 'Actual Size')
-        self.view.add_command(label = 'Zoom')
+
+        #---Submenu de Zoom---#
+        self.submenuview = Menu(self.view, tearoff = 0)
+        self.submenuview.add_command(label = 'Zoom In', accelerator = 'Ctrl+plus')
+        self.submenuview.add_command(label = 'Zoom Out', accelerator = 'Ctrl+minus')
+        self.submenuview.add_separator()
+        self.submenuview.add_command(label = '50%')
+        self.submenuview.add_command(label = '75%')
+        self.submenuview.add_command(label = '100%', accelerator = 'Ctrl+I')
+        self.submenuview.add_command(label = '200%')
+        self.submenuview.add_command(label = '400%')
+        self.submenuview.add_separator()
+        self.submenuview.add_command(label = 'Custom...', accelerator = 'Crtl+M')
+        self.submenuview.add_cascade(label = 'Zoom', menu = self.submenuview)
+
         self.view.add_separator()
         self.view.add_command(label = 'Go To')
         self.view.add_command(label = 'Rotate')
@@ -71,6 +90,15 @@ class Ventana:
         self.view.add_separator()
         self.view.add_command(label = 'Language')
         self.bar.add_cascade(label = 'View', menu = self.view)
+
+        #---Barra de Tools---#
+        self.tools = Menu(self.bar, tearoff = 0)
+        self.tools.add_command(label = 'Hand Tool')
+        self.tools.add_command(label = 'Select Tool')
+        self.tools.add_command(label = 'Rectangle Tool')
+        self.tools.add_command(label = 'Magnifying Glass')
+        self.tools.add_command(label = 'Marquee Zoom')
+        self.bar.add_cascade(label = 'Tools', menu = self.tools)
 
 
         self.root.config(menu = self.bar)
