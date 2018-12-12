@@ -233,8 +233,12 @@ class Ventana:
         self.ready = Label(self.footer, text="Ready")
         self.ready.grid(row = 0, column = 0, sticky = W)
 
-        self.page = Label(self.footer, text="Page 2 of 2          27.94 x 21.59 cm")
+        self.page = Label(self.footer, text="Page 2 of 2")
         self.page.grid(row = 0, column = 1, sticky = E)
+        self.sep8 = ttk.Separator(self.footer,orient = VERTICAL)
+        self.sep8.grid(row = 0, column = 2, sticky = "ns", padx= (2,2),pady=(1,1))
+        self.medida = Label(self.footer, text = '27.94 x 21.59 cm')
+        self.medida.grid(row = 0, column = 3, sticky = E)
 
          
      
