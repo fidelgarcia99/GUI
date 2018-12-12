@@ -198,7 +198,9 @@ class Ventana:
     def getIconos(self):
       iconos = []
       #Accede a la carpeta icons y obtiene el directorio, los subdirectorios y los archivos en ella
-      dir, subdir,archivos = next(os.walk('./icons'))
+      dir = next(os.walk('./icons'))
+      archivos = next(os.walk('./icons'))
+      subdir = next(os.walk('./icons'))
       #Convertimos los archivos a formato de imagen para ser usados
       for archivo in archivos:
           image_path = os.path.join(dir,archivo)
