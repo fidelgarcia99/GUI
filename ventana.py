@@ -205,13 +205,13 @@ class Ventana:
             self.nb.add(self.tabs[i], text = name)
 
         # Crea seccion para los thumbnails
-        self.side = Frame(self.center, width = ancho*(1/12), height = self.alto*0.9)
+        self.side = Frame(self.center, bg = 'white' ,width = ancho*(1/12), height = self.alto*0.9)
         self.side.grid(row = 1, column = 0, sticky = W+N+S+E)
         self.side.config(highlightbackground = '#c8d6e5', highlightthickness = 8)
         
-        self.btn_cog = Button(self.side, image = self.icons[26], bd = 0)
+        self.btn_cog = Button(self.side, bg = 'white', image = self.icons[26], bd = 0)
         self.btn_cog.grid(row = 0, column = 0, sticky = E, padx = (4,4), pady = (4,4))
-        self.btn_x = Button(self.side, image = self.icons[27], bd = 0)
+        self.btn_x = Button(self.side, bg = 'white', image = self.icons[27], bd = 0)
         self.btn_x.grid(row = 0, column = 1, sticky = E, padx = (4,4), pady = (4,4))
         
 
